@@ -1,0 +1,11 @@
+clang compiler on windows need
+
+argument "--target=x86_64-w64-mingw" in tasks.json
+
+
+-------------------------------
+
+
+launch.json need to care the preLaunchTask name,
+
+it is about the tasks.json label.

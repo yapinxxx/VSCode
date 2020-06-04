@@ -1,0 +1,32 @@
+1.	We need to build the executable,
+
+	so we set the tasks.json,
+
+	tasks.json will choose the compiler,
+
+	and name this active.
+
+
+2.	We want to launch, so we create the launch.json,
+
+	launch will choose the debugger, and find the build,
+
+	if name wrong it won't work.
+
+
+3.	c_cpp_properties.json it will tell the program,
+
+	where is the library, you also can merge the library,
+
+	but it will look ugly.
+
+	
+	However, it is very convienence.
+
+
+4.	If you want to compile the C++ program,
+
+	you have to use clang-cpp.exe, not clang.exe
+
+	or you will get the wrong message.
+

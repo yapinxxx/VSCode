@@ -1,0 +1,31 @@
+// 作者：?九鼎
+// ?接：https://www.zhihu.com/question/30315894/answer/154979413
+// ?源：知乎
+// 著作??作者所有。商?????系作者?得授?，非商????注明出?。
+
+// https://github.com/Microsoft/vscode-cpptools/blob/master/launch.md
+{
+    "version": "0.2.0",
+    "configurations": [{
+        "name": "(gdb) Launch", // 配置名稱，將會在啟動配置的下拉菜單中顯示
+        "type": "cppdbg", // 配置類型，cppdbg對應cpptools提供的調試功能；可以認為此處只能是cppdbg
+        "request": "launch", // 請求配置類型，可以為launch（啟動）或attach（附加）
+        "program": "${fileDirname}/${fileBasenameNoExtension}.exe", // 將要進行調試的程序的路徑
+        "args": [], // 程序調試時傳遞給程序的命令行參數，一般設為空即可
+        "stopAtEntry": false, // 設為true時程序將暫停在程序入口處，相當於在main上打斷點
+        "cwd": "${workspaceFolder}", // 調試程序時的工作目錄，此為工作區文件夾；改成${fileDirname}可變為文件所在目錄
+        "environment": [], // 環境變量
+        "externalConsole": true, // 為true時使用單獨的cmd窗口，與其它IDE一致；18年10月後設為false可調用VSC內置終端
+        "internalConsoleOptions": "neverOpen", // 如果不設為neverOpen，調試時會跳到「調試控制台」選項卡，你應該不需要對gdb手動輸命令吧？
+        "MIMode": "gdb", // 指定連接的調試器，可以為gdb或lldb。但我沒試過lldb
+        "miDebuggerPath": "gdb.exe", // 調試器路徑，Windows下後綴不能省略，Linux下則不要
+        "setupCommands": [
+            { // 模板自帶，好像可以更好地顯示STL容器的內容，具體作用自行Google
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": false
+            }
+        ],
+        "preLaunchTask": "Compile" // 調試會話開始前執行的任務，一般為編譯程序。與tasks.json的label相對應
+    }]
+}

@@ -1,0 +1,62 @@
+ /* C 版本 */
+#include <stdio.h> 
+int main( void )
+{
+int i, c;
+for ( ; ; )
+{
+fputs("Please input an integer: ", stdout);
+scanf("%d", &i);
+if ( feof(stdin) || ferror(stdin) )  
+{ /* 如果使用者輸入檔案結束標誌（或檔案已被讀完）， */
+/* 或者發生讀寫錯誤，則退出迴圈             */
+/* do something */
+break;
+}
+/* 沒有發生錯誤，清空輸入流。                 */
+/* 通過 while 迴圈把輸入流中的余留資料「吃」掉 */
+while ( (c = getchar()) != '\n' && c != EOF ) ;    /*可直接將這句程式碼當成fflush(stdio)的替代，直接執行可清除輸入快取流*/
+/* 使用 scanf("%*[^\n]"); 也可以清空輸入流， */
+/* 不過會殘留 \n 字元。                          */
+printf("%d\n", i);
+}
+return 0;
+}
+
+
+----------------------------------------------
+
+/* C++   版本 */
+#include <iostream>
+#include <limits> // 為了使用numeric_limits
+using std::cout;
+using std::endl;
+using std::cin;
+using std::numeric_limits;
+using std::streamsize;
+int main()
+{
+int value;
+for ( ; ; )
+{
+cout << "Enter an integer: ";
+cin >> value;
+if ( cin.eof() || cin.bad() )
+{ // 如果使用者輸入檔案結束標誌（或檔案已被讀完），
+// 或者發生讀寫錯誤，則退出迴圈
+// do something
+break;
+}
+// 讀到非法字元後，輸入流將處於出錯狀態，
+// 為了繼續獲取輸入，首先要呼叫 clear 函式
+// 來清除輸入流的錯誤標記，然後才能呼叫
+// ignore 函式來清除輸入流中的資料。
+cin.clear();
+// numeric_limits<streamsize>::max() 返回輸入緩衝的大小。
+// ignore 函式在此將把輸入流中的資料清空。
+// 這兩個函式的具體用法請讀者自行查詢。
+cin.ignore( numeric_limits<streamsize>::max(), '\n' );
+cout << value << '\n';
+}
+return 0;
+} 

@@ -1,0 +1,44 @@
+{
+    "editor.fontFamily": 
+    "'Source Code Pro', 'Courier New', Consolas, monospace",
+    "workbench.colorTheme": "Monokai",
+    "workbench.iconTheme": "vscode-great-icons",
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "clang.diagnostic.enable": false,
+    
+    //yapin setting
+    "files.encoding": "cp950", //use Big5
+    
+    "[cpp]": {
+        "editor.formatOnType": true,
+        "editor.formatOnSave": true,
+        "editor.renderIndentGuides": true,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": true,
+        "editor.tabSize": 4
+    },
+    "clang.executable" : "H:\\LLVM\\bin\\clang.exe",
+    "clang.cxxflags": [
+        "-std=c++11",
+        "-IH:\\LLVM\\include/**",
+        "-IH:\\LLVM\\x86_64-w64-mingw32\\include/**",
+
+        "-I${workspaceRoot}\\include",
+        "-I${cwd}"
+    ],
+    "clang.cflags":[
+        "-std=c99",
+        "-IC:\\MinGW\\include",
+        "-IH:\\LLVM\\x86_64-w64-mingw32\\include/**",
+        
+        "-I${workspaceRoot}\\include",
+        "-I${cwd}"
+    ],
+    "clang.completion.triggerChars": [
+
+        ".",
+        ":",
+        ">"
+    ]
+
+}

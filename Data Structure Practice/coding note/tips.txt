@@ -1,0 +1,14 @@
+to name struct
+
+struct polynomial
+{
+
+    float coef; //係數
+
+	unsigned int expon; //次數
+
+}typedef pnl;
+--------------
+
+C  :	getchatr()
+C++:	cin.get()
